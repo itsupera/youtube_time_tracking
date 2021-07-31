@@ -1,0 +1,34 @@
+Youtube Time Tracking
+======================
+
+Script to compute stats on how much time you watched Youtube, aggregated by day and channel name.
+
+The output is a CSV file, which will look like this:
+```
+Day,TOTAL,YUYUの日本語Podcast,マコなり社長,Teppei,Nihongo SWiTCH
+2021-07-29,36,20,,16,
+2021-07-30,52,20,18,,14
+2021-07-31,0,,,,
+```
+
+Setup
+------
+
+Tested on Ubuntu Linux, should work on other platforms supporting Python
+
+```bash
+sudo apt install python3-virtualenv
+virtualenv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+Usage
+------
+
+**IMPORTANT**: To use this, you first need go to https://takeout.google.com to extract "YouTube and YouTube Music" for your account.
+Make sure you click "Multiple formats" and choose JSON instead of HTML for the "History" entry.
+Extract the zip file, it should contain the file `takeout/YouTube and YouTube Music/history/watch-history.json`
+which you will give to the script.
+
+Run `python3 yttt.py --help` to get the usage.

@@ -1,0 +1,2 @@
+youtube-dl
+typer>=0.3.2,<1
