@@ -23,12 +23,21 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+(Optional) To build a standalone executable for the application:
+```bash
+pip3 install nuitka
+python3 -m nuitka --plugin-enable=pyqt5 --onefile yttt_qt.py
+./yttt_qt.bin
+```
+
 Usage
 ------
 
+Run `python3 yttt_q3.py`
+
 **IMPORTANT**: To use this, you first need go to https://takeout.google.com to extract "YouTube and YouTube Music" for your account.
+
 Make sure you click "Multiple formats" and choose JSON instead of HTML for the "History" entry.
+
 Extract the zip file, it should contain the file `takeout/YouTube and YouTube Music/history/watch-history.json`
 which you will give to the script.
-
-Run `python3 yttt.py --help` to get the usage.
