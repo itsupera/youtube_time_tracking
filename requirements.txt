@@ -1,2 +1,3 @@
-youtube-dl
+youtube-dl>=2021.6.6
 typer>=0.3.2,<1
+pyqt5>=5.15,<6
