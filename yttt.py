@@ -70,14 +70,17 @@ def main(
             download_video_metadata(url_path, prefix_fpath)
             metadata_fpath = prefix_fpath + ".info.json"
 
-            with open(metadata_fpath) as fd:
-                metadata = json.load(fd)
+            try:
+                with open(metadata_fpath) as fd:
+                    metadata = json.load(fd)
 
-            channel_name = metadata['channel']
-            duration_in_minutes = round(metadata['duration'] / 60)
-            day = dt.strftime("%Y-%m-%d")
-            stats[day][channel_name] += duration_in_minutes
-            stats_by_channel[channel_name] += duration_in_minutes
+                channel_name = metadata['channel']
+                duration_in_minutes = round(metadata['duration'] / 60)
+                day = dt.strftime("%Y-%m-%d")
+                stats[day][channel_name] += duration_in_minutes
+                stats_by_channel[channel_name] += duration_in_minutes
+            except FileNotFoundError:
+                logging.warning(f"Could not retrieve stats for video {entry['titleUrl']}")
 
     if not date_from:
         date_from = dt
