@@ -61,6 +61,10 @@ class App(QMainWindow):
         centralWidget = QWidget()
         self.setCentralWidget(centralWidget)
 
+        label = HyperlinkLabel(self)
+        label.setText('Please refer to <a href="https://github.com/itsupera/youtube_time_tracking#usage">' \
+                       'this documentation</a> to get the "watch-history.json" file.')
+
         buttonJSON = QPushButton('Select "watch-history.json" file to use', self)
         buttonJSON.setToolTip('Open dialog to select JSON file')
         buttonJSON.clicked.connect(self.on_click_select_input)
@@ -96,6 +100,7 @@ class App(QMainWindow):
         layout_dates.addWidget(self.textbox_date_to)
 
         layout = QVBoxLayout()
+        layout.addWidget(label)
         layout.addWidget(buttonJSON)
         layout.addLayout(layout_dates)
         layout.addWidget(self.buttonCSV)
@@ -157,7 +162,14 @@ class App(QMainWindow):
         self.worker.finished.connect(self.worker.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
         self.thread.start()
-        
+
+
+class HyperlinkLabel(QLabel):
+    def __init__(self, parent=None):
+        super().__init__()
+        self.setOpenExternalLinks(True)
+        self.setParent(parent)
+
 
 class QTextEditLogger(logging.Handler, QObject):
     appendPlainText = pyqtSignal(str)
