@@ -11,33 +11,49 @@ Day,TOTAL,YUYUの日本語Podcast,マコなり社長,Teppei,Nihongo SWiTCH
 2021-07-31,0,,,,
 ```
 
+Usage
+------
+
+**IMPORTANT**: To use this, you first need go to extract "YouTube and YouTube Music" data for your account.
+
+Go to https://takeout.google.com, click on "Deselect all".
+
+![How to export 1](how_to_export1.png)
+
+Scroll down to find the "YouTube and YouTube Music" section.
+Add it to the export by ticking the box, then click on "Multiple formats".
+
+![How to export 2](how_to_export2.png)
+
+For "History", make sure you select "JSON" instead of the default "HTML".
+
+![How to export 3](how_to_export3.png)
+
+Then follow the instructions to download a ZIP file with your data.
+
+Extract the zip file, it should contain the file `takeout/YouTube and YouTube Music/history/watch-history.json`
+which you will give to the program.
+
+Go the [release page](https://github.com/itsupera/youtube_time_tracking/releases)
+and grab the latest version for your platform.
+
+Run it and follow the instructions to get your CSV file !
+
 Setup
 ------
 
-Tested on Ubuntu Linux, should work on other platforms supporting Python
+To setup the project from sources and build the executables,
+here are the instructions for Ubuntu Linux (should work on other platforms supporting Python):
 
 ```bash
 sudo apt install python3-virtualenv
 virtualenv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
+python3 yttt_qt.p3
 ```
 
-(Optional) To build a standalone executable for the application:
+To build a standalone Linux executable:
 ```bash
-pip3 install nuitka
-python3 -m nuitka --plugin-enable=pyqt5 --onefile yttt_qt.py
-./yttt_qt.bin
+python3 setup.py build_exe
 ```
-
-Usage
-------
-
-Run `python3 yttt_q3.py`
-
-**IMPORTANT**: To use this, you first need go to https://takeout.google.com to extract "YouTube and YouTube Music" for your account.
-
-Make sure you click "Multiple formats" and choose JSON instead of HTML for the "History" entry.
-
-Extract the zip file, it should contain the file `takeout/YouTube and YouTube Music/history/watch-history.json`
-which you will give to the script.
