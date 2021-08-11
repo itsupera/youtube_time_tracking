@@ -31,8 +31,7 @@ for:
       - "powershell gl-ci-helpers/appveyor/install_opengl.ps1"
       - "SET PYVISTA_OFF_SCREEN=True"
       - "%PYTHON_WIN%\\python.exe -m pip install -r requirements.txt"
-      - "%PYTHON_WIN%\\python.exe -m pip install cx_freeze"
-      - "%PYTHON_WIN%\\python.exe -m pip install ."
+      - "%PYTHON_WIN%\\python.exe -m pip install .[cx_freeze]"
       - "%PYTHON_WIN%\\python.exe cx_freeze_setup.py bdist_msi"
       - ps: "ls"
 
@@ -52,8 +51,7 @@ for:
     
     install:
       - "$HOME/$PYTHON_MAC/bin/python -m pip install -r requirements.txt"
-      - "$HOME/$PYTHON_MAC/bin/python -m pip install cx_freeze"
-      - "$HOME/$PYTHON_MAC/bin/python -m pip install ."
+      - "$HOME/$PYTHON_MAC/bin/python -m pip install .[cx_freeze]"
       - "$HOME/$PYTHON_MAC/bin/python cx_freeze_setup.py bdist_mac --iconfile icon.icns --bundle-name=yttt --custom-info-plist Info.plist -q"
       - "npm i -g create-dmg"
       - "cd build"
