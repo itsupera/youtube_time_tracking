@@ -1,8 +1,5 @@
 """
 GUI for yttt.
-
-Build an executable with nuitka:
-    python3 -m nuitka --plugin-enable=pyqt5 --onefile yttt_qt.py
 """
 import datetime
 import json
@@ -11,9 +8,9 @@ import sys
 
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, QObject, QThread
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QPushButton, QPlainTextEdit, \
-    QVBoxLayout, QMainWindow, QLabel, QCalendarWidget, QLineEdit, QHBoxLayout
+    QVBoxLayout, QMainWindow, QLabel, QLineEdit, QHBoxLayout
 
-from yttt import main, summarize_history_stats
+from yttt.cli import main, summarize_history_stats
 
 
 class Worker(QObject):

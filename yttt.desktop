@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Version=0.1
+Name=Youtube Time Tracker Tools
+GenericName=Youtube Time Tracker Tools
+Comment=Tracking your time spent on YouTube
+Exec=yttt
+Icon=yttt
+Categories=Education;
