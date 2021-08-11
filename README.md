@@ -25,7 +25,7 @@ Add it to the export by ticking the box, then click on "Multiple formats".
 
 ![How to export 2](how_to_export2.png)
 
-For "History", make sure you select "JSON" instead of the default "HTML".
+For "History" entry, make sure you select "JSON" instead of the default "HTML".
 
 ![How to export 3](how_to_export3.png)
 
@@ -49,11 +49,12 @@ here are the instructions for Ubuntu Linux (should work on other platforms suppo
 sudo apt install python3-virtualenv
 virtualenv venv
 source venv/bin/activate
-pip3 install -r requirements.txt
-python3 yttt_qt.p3
+pip3 install ".[cx_freeze]"
+python3 -m yttt.gui
 ```
 
-To build a standalone Linux executable:
+To build a standalone executable:
 ```bash
-python3 setup.py build_exe
+python3 cx_freeze_setup.py build_exe
+./build/exe.linux-x86_64-3.8/yttt
 ```
